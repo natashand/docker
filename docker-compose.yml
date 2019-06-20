@@ -1,8 +1,10 @@
 version: "3.1"
 services:
     server:
-        build: configs/php/phpimage
         container_name: server
+        build:
+            context: ./configs/
+            dockerfile: "image"
         working_dir: /var/www
         volumes:
             - ./apps:/var/www
@@ -15,9 +17,9 @@ services:
         image: mysql:5.7
         command: mysqld --character-set-server=utf8 --collation-server=utf8_general_ci
         container_name: mysql
-        working_dir: /apps
+        working_dir: /var/www
         volumes:
-            - ./apps:/apps
+            - ./apps:/var/www
             - ./data/mysql:/var/lib/mysql
             - ./log/mysql:/var/log/mysql
         environment:
