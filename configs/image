@@ -9,7 +9,6 @@ RUN apt-get update && apt-get install -y \
 	libpng-dev \
 	--no-install-recommends
 RUN docker-php-ext-install pdo_mysql mysqli mcrypt zip
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN ln -s /etc/apache2/sites-available/site.local.conf /etc/apache2/sites-enabled/
 RUN ln -s /etc/apache2/sites-available/pma.local.conf /etc/apache2/sites-enabled/
 WORKDIR /var/www
